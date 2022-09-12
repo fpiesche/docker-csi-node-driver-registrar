@@ -1,7 +1,7 @@
 FROM golang:1.19.1-alpine AS builder
 
-RUN apk add --no-cache git make bash
-ADD node-driver-registrar/ /node-driver-registrar/
+RUN apk add --no-cache git make bash && \
+  git clone https://github.com/kubernetes-csi/node-driver-registrar.git /node-driver-registrar
 WORKDIR /node-driver-registrar
 RUN make
 
